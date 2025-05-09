@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Burgerinfo {
   final String burgerImage;
   final String burgerTitle;

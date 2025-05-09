@@ -155,6 +155,7 @@ class Hometab extends StatelessWidget {
                               height: size.height * .02,
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Icon(
                                   Icons.star,
@@ -167,7 +168,9 @@ class Hometab extends StatelessWidget {
                                       fontWeight: FontWeight.normal,
                                       color: Appcolors.brownColor),
                                 ),
-                                Spacer(),
+                                SizedBox(
+                                  width: size.width * .17,
+                                ),
                                 GestureDetector(
                                   onTap: () {},
                                   child: Icon(Icons.favorite_border_outlined,
