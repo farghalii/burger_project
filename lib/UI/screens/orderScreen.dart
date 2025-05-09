@@ -1,6 +1,7 @@
 import 'package:burger_project/UI/screens/homeScreen.dart';
 import 'package:burger_project/UI/screens/paymentScreen.dart';
 import 'package:burger_project/core/models/burgerInfo.dart';
+
 import 'package:burger_project/core/utils/appColors.dart';
 import 'package:flutter/material.dart';
 
@@ -83,6 +84,9 @@ class _OrderscreenState extends State<Orderscreen> {
                 ),
                 Row(
                   children: [
+                    SizedBox(
+                      width: size.width * .2,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -107,14 +111,17 @@ class _OrderscreenState extends State<Orderscreen> {
                             overlayShape: const RoundSliderOverlayShape(
                                 overlayRadius: 20),
                           ),
-                          child: Slider(
-                              max: 20,
-                              min: 0,
-                              value: value.toDouble(),
-                              onChanged: (double newValue) {
-                                value = newValue.round();
-                                setState(() {});
-                              }),
+                          child: SizedBox(
+                            width: size.width * .5,
+                            child: Slider(
+                                max: 20,
+                                min: 0,
+                                value: value.toDouble(),
+                                onChanged: (double newValue) {
+                                  value = newValue.round();
+                                  setState(() {});
+                                }),
+                          ),
                         ),
                         Row(
                           children: [
@@ -141,64 +148,6 @@ class _OrderscreenState extends State<Orderscreen> {
                         ),
                       ],
                     ),
-                    Spacer(),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Portion',
-                          style: TextStyle(
-                              color: Appcolors.brownColor,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16),
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Appcolors.redColor,
-                                      iconColor: Colors.white,
-                                      fixedSize: Size(
-                                          size.width * .01, size.height * .03),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12))),
-                                  onPressed: () {
-                                    if (counter == 1) return;
-                                    counter--;
-                                    setState(() {});
-                                  },
-                                  child: Icon(Icons.remove)),
-                            ),
-                            Text(
-                              '$counter',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 20),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Appcolors.redColor,
-                                      iconColor: Colors.white,
-                                      fixedSize: Size(
-                                          size.width * .01, size.height * .03),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12))),
-                                  onPressed: () {
-                                    if (counter == 3) return;
-                                    counter++;
-                                    setState(() {});
-                                  },
-                                  child: Icon(Icons.add)),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
                   ],
                 ),
                 SizedBox(
@@ -216,7 +165,7 @@ class _OrderscreenState extends State<Orderscreen> {
                                 borderRadius: BorderRadius.circular(12))),
                         onPressed: () {},
                         child: Text(
-                          '\$${burgerinfo.burgerPrice.toString()}',
+                          '\$${burgerinfo.burgerPrice.toStringAsFixed(2)}',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,

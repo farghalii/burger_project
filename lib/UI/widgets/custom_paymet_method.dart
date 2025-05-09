@@ -5,12 +5,20 @@ class CustomPaymetMethod extends StatelessWidget {
   final String image;
   final String text;
   final Color? textColor;
-  const CustomPaymetMethod(
-      {super.key,
-      required this.color,
-      required this.image,
-      required this.text,
-      this.textColor});
+  final String groupValue;
+  final String value;
+  final ValueChanged<String?> onChanged;
+
+  const CustomPaymetMethod({
+    super.key,
+    required this.color,
+    required this.image,
+    required this.text,
+    required this.groupValue,
+    required this.value,
+    required this.onChanged,
+    this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +30,13 @@ class CustomPaymetMethod extends StatelessWidget {
         color: color,
         child: SizedBox(
           height: MediaQuery.of(context).size.height * .08,
-          child: ListTile(
-            contentPadding: EdgeInsets.only(top: 10, left: 10),
-            leading: Image(
-              image: AssetImage(image),
+          child: RadioListTile<String>(
+            contentPadding: const EdgeInsets.only(top: 10, left: 10),
+            secondary: Image.asset(
+              image,
               height: MediaQuery.of(context).size.height * .05,
             ),
+            controlAffinity: ListTileControlAffinity.trailing,
             title: Text(
               text,
               style: TextStyle(
@@ -36,6 +45,10 @@ class CustomPaymetMethod extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
+            activeColor: Colors.black,
+            value: value,
+            groupValue: groupValue,
+            onChanged: onChanged,
           ),
         ),
       ),

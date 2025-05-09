@@ -5,10 +5,18 @@ import 'package:burger_project/core/utils/appAssets.dart';
 import 'package:burger_project/core/utils/appColors.dart';
 import 'package:flutter/material.dart';
 
-class Paymentscreen extends StatelessWidget {
-  final double taxes = 0.3;
+class Paymentscreen extends StatefulWidget {
   static const String routeName = '/payment screen';
   const Paymentscreen({super.key});
+
+  @override
+  State<Paymentscreen> createState() => _PaymentscreenState();
+}
+
+class _PaymentscreenState extends State<Paymentscreen> {
+  String selectedMethod = '';
+
+  final double taxes = 0.3;
 
   @override
   Widget build(BuildContext context) {
@@ -138,12 +146,26 @@ class Paymentscreen extends StatelessWidget {
               color: Appcolors.brownColor,
               image: Appassets.masterCard,
               text: 'Credit card',
+              groupValue: selectedMethod,
+              value: 'paypal',
+              onChanged: (val) {
+                setState(() {
+                  selectedMethod = val!;
+                });
+              },
             ),
             CustomPaymetMethod(
               color: Color(0xffF3F4F6),
               image: Appassets.visaImage,
               text: 'Debit card',
               textColor: Appcolors.brownColor,
+              groupValue: selectedMethod,
+              value: 'visa',
+              onChanged: (val) {
+                setState(() {
+                  selectedMethod = val!;
+                });
+              },
             ),
             Spacer(),
             Row(
@@ -174,7 +196,11 @@ class Paymentscreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     onPressed: () {
-                      showSuccessPopup(context);
+                      if (selectedMethod.isEmpty) {
+                        showAlertDialog(context);
+                      } else {
+                        showSuccessPopup(context);
+                      }
                     },
                     child: Text(
                       "Pay Now",
@@ -188,6 +214,59 @@ class Paymentscreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error, color: Appcolors.brownColor, size: 50),
+              const SizedBox(height: 16),
+              const Text(
+                'Warning!',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Appcolors.brownColor),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                '''You should choose a payment method''',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Appcolors.brownColor,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: Size(MediaQuery.of(context).size.width * .4,
+                          MediaQuery.of(context).size.height * .06),
+                      backgroundColor: Appcolors.brownColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12))),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'Go Back',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22),
+                  )),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -215,8 +294,7 @@ class Paymentscreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Text(
-                '''Your payment was successful
-A receipt for this purchase has been sent to your email.''',
+                '''Your payment was successful''',
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),

@@ -129,14 +129,10 @@ class Hometab extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Align(
-                              alignment: Alignment.center,
-                              child: Image(
-                                image:
-                                    AssetImage(burgerinfo[index].burgerImage),
-                                width: size.width * .5,
-                                height: size.height * .13,
-                              ),
+                            Image(
+                              image: AssetImage(burgerinfo[index].burgerImage),
+                              width: size.width * .5,
+                              height: size.height * .13,
                             ),
                             SizedBox(
                               height: size.height * .02,
