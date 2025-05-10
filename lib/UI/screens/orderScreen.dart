@@ -1,9 +1,9 @@
-import 'package:burger_project/UI/screens/homeScreen.dart';
 import 'package:burger_project/UI/screens/paymentScreen.dart';
-import 'package:burger_project/core/models/burgerInfo.dart';
-
-import 'package:burger_project/core/utils/appColors.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/models/burgerInfo.dart';
+import '../../core/utils/appColors.dart';
+import 'homeScreen.dart';
 
 class Orderscreen extends StatefulWidget {
   static final String routeName = '/order screen';
@@ -102,10 +102,10 @@ class _OrderscreenState extends State<Orderscreen> {
                           data: SliderTheme.of(context).copyWith(
                             activeTrackColor: Colors.red,
                             inactiveTrackColor:
-                                Colors.red.withValues(alpha: 0.2),
+                                Colors.grey.withValues(alpha: .3),
                             trackHeight: 6.0,
                             thumbColor: Appcolors.redColor,
-                            overlayColor: Colors.red.withValues(alpha: 0.3),
+                            overlayColor: Colors.red,
                             thumbShape: const RoundSliderThumbShape(
                                 enabledThumbRadius: 10),
                             overlayShape: const RoundSliderOverlayShape(

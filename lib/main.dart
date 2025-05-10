@@ -1,11 +1,13 @@
-import 'package:burger_project/UI/screens/homeScreen.dart';
-import 'package:burger_project/UI/screens/orderScreen.dart';
-import 'package:burger_project/UI/screens/paymentScreen.dart';
-import 'package:burger_project/UI/screens/splashScreen.dart';
+
 import 'package:flutter/material.dart';
+  
+import 'UI/screens/homeScreen.dart';
+import 'UI/screens/orderScreen.dart';
+import 'UI/screens/paymentScreen.dart';
+import 'UI/screens/splashScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        SplashScreen.routeName: (_) => SplashScreen(),
-        HomeScreen.routeName: (_) => HomeScreen(),
+        SplashScreen.routeName: (_) => const SplashScreen(),
+        HomeScreen.routeName: (_) => const HomeScreen(),
         Orderscreen.routeName: (_) => Orderscreen(),
-        Paymentscreen.routeName: (_) => Paymentscreen(),
+        Paymentscreen.routeName: (_) => const Paymentscreen(),
 
       },
       initialRoute: SplashScreen.routeName,

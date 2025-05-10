@@ -1,9 +1,11 @@
-import 'package:burger_project/UI/screens/homeScreen.dart';
-import 'package:burger_project/UI/widgets/custom_paymet_method.dart';
-import 'package:burger_project/core/models/burgerInfo.dart';
-import 'package:burger_project/core/utils/appAssets.dart';
-import 'package:burger_project/core/utils/appColors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../core/models/burgerInfo.dart';
+import '../../core/utils/appAssets.dart';
+import '../../core/utils/appColors.dart';
+import '../widgets/custom_paymet_method.dart';
+import 'homeScreen.dart';
 
 class Paymentscreen extends StatefulWidget {
   static const String routeName = '/payment screen';

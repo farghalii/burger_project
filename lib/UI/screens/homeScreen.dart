@@ -1,9 +1,10 @@
-import 'package:burger_project/UI/tabs/favTab.dart';
-import 'package:burger_project/UI/tabs/homeTab.dart';
-import 'package:burger_project/UI/tabs/profileTab.dart';
-import 'package:burger_project/core/utils/appAssets.dart';
-import 'package:burger_project/core/utils/appColors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../core/utils/appColors.dart';
+import '../tabs/favTab.dart';
+import '../tabs/homeTab.dart';
+import '../tabs/profileTab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home screen';
