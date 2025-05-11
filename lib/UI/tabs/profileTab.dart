@@ -89,7 +89,7 @@ class Profiletab extends StatelessWidget {
                           SizedBox(height: 30),
                           TextFormField(
                             enabled: false,
-                            initialValue: "Shebeen Elkom ,Meet Khaan",
+                            initialValue: "Shebeen Elkom ,Pairs Street",
                             decoration: InputDecoration(
                               labelText: 'Delivery address',
                               labelStyle:

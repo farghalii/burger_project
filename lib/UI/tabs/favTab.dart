@@ -11,8 +11,11 @@ class Favtab extends StatefulWidget {
 
 class _FavtabState extends State<Favtab> {
   @override
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final favorites = FavoriteManager.favoriteBurgers;
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Appcolors.redColor,
@@ -24,7 +27,18 @@ class _FavtabState extends State<Favtab> {
         backgroundColor: Color(0xffEF2A39),
       ),
       backgroundColor: Colors.white,
-      body: Padding(
+      body: favorites.isEmpty
+          ? Center(
+        child: Text(
+          "No favorites yet!",
+          style: TextStyle(
+            fontSize: 18,
+            color: Appcolors.brownColor,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      )
+          : Padding(
         padding: const EdgeInsets.all(20),
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -33,15 +47,14 @@ class _FavtabState extends State<Favtab> {
             mainAxisSpacing: 30.0,
             childAspectRatio: 0.7,
           ),
-          itemCount: FavoriteManager.favoriteBurgers.length,
+          itemCount: favorites.length,
           itemBuilder: (context, index) {
-            final burger = FavoriteManager.favoriteBurgers[index];
+            final burger = favorites[index];
             return Card(
               elevation: 10,
               color: Colors.white,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -103,6 +116,7 @@ class _FavtabState extends State<Favtab> {
       ),
     );
   }
+
 }
 
 class FavoriteManager {

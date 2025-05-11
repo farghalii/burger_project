@@ -13,4 +13,6 @@ class Appassets {
       'assets/images/homeImages/hamburger_veggie_Burger.png';
   static const String visaImage = 'assets/images/homeImages/visa.png';
   static const String masterCard = 'assets/images/homeImages/masterCard.png';
+  static const String home_burger_image =
+      'assets/images/homeImages/home_burger_image.png';
 }

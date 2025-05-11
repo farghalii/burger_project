@@ -6,8 +6,6 @@ import '../../core/utils/appColors.dart';
 import '../screens/orderScreen.dart';
 import 'favTab.dart';
 
-
-
 class Hometab extends StatefulWidget {
   @override
   State<Hometab> createState() => _HometabState();
@@ -19,7 +17,7 @@ class _HometabState extends State<Hometab> {
         burgerTitle: 'Cheeseburger',
         burgerName: "Wendy's Burger",
         burgerInfo:
-        '''The Cheeseburger Wendy's Burger is a classic fast food burger that packs a punch of flavor in every bite. Made with a juicy beef patty cooked to perfection, it's topped with melted American cheese, crispy lettuce, ripe tomato, and crunchy pickles.''',
+            '''The Cheeseburger Wendy's Burger is a classic fast food burger that packs a punch of flavor in every bite. Made with a juicy beef patty cooked to perfection, it's topped with melted American cheese, crispy lettuce, ripe tomato, and crunchy pickles.''',
         burgerImage: Appassets.cheeseBurger,
         burgerRate: '4.9',
         burgerPrice: 8.24),
@@ -27,7 +25,7 @@ class _HometabState extends State<Hometab> {
         burgerTitle: 'Hamburger',
         burgerName: "Veggie Burger",
         burgerInfo:
-        '''Enjoy our delicious Hamburger Veggie Burger, made with a savory blend of fresh vegetables and herbs, topped with crisp lettuce, juicy tomatoes, and tangy pickles, all served on a soft, toasted bun. ''',
+            '''Enjoy our delicious Hamburger Veggie Burger, made with a savory blend of fresh vegetables and herbs, topped with crisp lettuce, juicy tomatoes, and tangy pickles, all served on a soft, toasted bun. ''',
         burgerImage: Appassets.hamburger_veggie_Burger,
         burgerRate: '4.8',
         burgerPrice: 9.99),
@@ -35,7 +33,7 @@ class _HometabState extends State<Hometab> {
         burgerTitle: 'Hamburger',
         burgerName: 'Chicken Burger',
         burgerInfo:
-        '''Our chicken burger is a delicious and healthier alternative to traditional beef burgers, perfect for those looking for a lighter meal option. Try it today and experience the mouth-watering flavors of our Hamburger Chicken Burger!''',
+            '''Our chicken burger is a delicious and healthier alternative to traditional beef burgers, perfect for those looking for a lighter meal option. Try it today and experience the mouth-watering flavors of our Hamburger Chicken Burger!''',
         burgerImage: Appassets.hamburger_chicken,
         burgerRate: '4.6',
         burgerPrice: 12.48),
@@ -43,7 +41,7 @@ class _HometabState extends State<Hometab> {
         burgerTitle: 'Hamburger ',
         burgerName: 'Fried Chicken ',
         burgerInfo:
-        '''Indulge in our crispy and savory Fried Chicken Burger, made with a juicy chicken patty, hand-breaded and deep-fried to perfection, served on a warm bun with lettuce, tomato, and a creamy sauce.''',
+            '''Indulge in our crispy and savory Fried Chicken Burger, made with a juicy chicken patty, hand-breaded and deep-fried to perfection, served on a warm bun with lettuce, tomato, and a creamy sauce.''',
         burgerImage: Appassets.hamburger_fried_chicken,
         burgerRate: '4.5',
         burgerPrice: 26.99),
@@ -89,30 +87,17 @@ class _HometabState extends State<Hometab> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Icon(
-                        Icons.search_rounded,
-                        color: Appcolors.brownColor,
-                        size: 35,
-                      ),
+                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  child: Container(
+                    color: Colors.white,
+                    height: 100,
+                    width: 400,
+                    child: Image.asset(
+                      Appassets.home_burger_image,
+                      fit: BoxFit.fill,
                     ),
-                    labelText: 'Search',
-                    labelStyle: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Appcolors.brownColor,
-                    ),
-                    enabledBorder: customBorder(),
-                    focusedBorder: customBorder(),
-                    errorBorder: customBorder(color: Appcolors.redColor),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
+                  )),
+              SizedBox(height: 10),
               Expanded(
                 child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -176,11 +161,12 @@ class _HometabState extends State<Hometab> {
                                     });
                                   },
                                   child: Icon(
-                                    FavoriteManager.isFavorite(burgerinfo[index])
+                                    FavoriteManager.isFavorite(
+                                            burgerinfo[index])
                                         ? Icons.favorite
                                         : Icons.favorite_border_outlined,
                                     color: FavoriteManager.isFavorite(
-                                        burgerinfo[index])
+                                            burgerinfo[index])
                                         ? Colors.red
                                         : Appcolors.brownColor,
                                   ),

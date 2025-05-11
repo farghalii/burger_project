@@ -14,7 +14,6 @@ class Orderscreen extends StatefulWidget {
 
 class _OrderscreenState extends State<Orderscreen> {
   int counter = 1;
-
   int value = 1;
 
   @override
@@ -101,8 +100,7 @@ class _OrderscreenState extends State<Orderscreen> {
                         SliderTheme(
                           data: SliderTheme.of(context).copyWith(
                             activeTrackColor: Colors.red,
-                            inactiveTrackColor:
-                                Colors.grey.withValues(alpha: .3),
+                            inactiveTrackColor: Colors.grey,
                             trackHeight: 6.0,
                             thumbColor: Appcolors.redColor,
                             overlayColor: Colors.red,
